@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dependency Injectors</title>
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <script type="text/javascript" src="/scripts/clientapp.js"></script>
+    <link rel="stylesheet" href="/styles/style.css"/>
+</head>
+
+<body ng-app="myApp">
+<h1>Angular!</h1>
+    <div ng-controller="CustomerController">
+        <div ng-repeat="customer in customers">
+            <p>{{customer.id}}</p>
+            <p>{{customer.first_name}}</p>
+            <p>{{customer.last_name}}</p>
+            <button ng-click="getOrders(customer.id)">Get My Order</button>
+
+        </div>
+    </div>
+</body>
+</html>
