@@ -32,12 +32,14 @@ app.get('/customer', function(req, res) {
 
 app.get('/customerorders/:id', function(req, res) {
     var results = [];
+    var customerID = req.params.id;
     pg.connect(connectionString, function(err, client, done) {
         var query = client.query('SELECT orders.order_date, orders.total FROM orders JOIN addresses ' +
-            'ON orders.address_id = addresses.id JOIN customers ON addresses.customer_id = customers.id' +
-            'WHERE customers.id = ' + id);
+            'ON orders.address_id = addresses.id JOIN customers ON addresses.customer_id = customers.id ' +
+            'WHERE customers.id = $1',
+            [customerID]);
 
-        query.on('row', function(row) {
+        query.on('row', function(row){
             results.push(row);
         });
         query.on('end', function() {

@@ -4,6 +4,7 @@
     <title>Dependency Injectors</title>
     <script type="text/javascript" src="/vendors/angular.min.js"></script>
     <script type="text/javascript" src="/scripts/clientapp.js"></script>
+    <script type="text/javascript" src="/scripts/ordersInfo.js"></script>
     <link rel="stylesheet" href="/styles/style.css"/>
 </head>
 
@@ -15,8 +16,12 @@
             <p>{{customer.first_name}}</p>
             <p>{{customer.last_name}}</p>
             <button ng-click="getOrders(customer.id)">Get My Order</button>
-
         </div>
+        <div ng-repeat="order in orders">
+            <orders-info-directive info="order"></orders-info-directive>
+        </div>
+
+
     </div>
 </body>
 </html>
